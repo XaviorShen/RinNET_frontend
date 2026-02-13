@@ -109,7 +109,7 @@ export function initializeApp(
     ProfileComponent,
     AnnouncementsComponent,
     EditComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

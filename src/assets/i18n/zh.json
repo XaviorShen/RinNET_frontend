@@ -47,6 +47,7 @@
       "Dxpass": "DX通行证",
       "Circle": "Circle圈子",
       "Festa": "Festa活动",
+      "ServerMissions": "服务器任务",
       "OnlineBattle": "全国对战"
     },
     "Messages": {
@@ -579,6 +580,9 @@
     },
     "FestaPage": {
       "Title": "Festa活动"
+    },
+    "ServerMissions": {
+      "Title": "服务器任务"
     },
     "Setting": {
       "Title": "设定",
