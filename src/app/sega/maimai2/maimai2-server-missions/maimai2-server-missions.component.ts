@@ -48,7 +48,9 @@ export class Maimai2ServerMissionsComponent implements OnInit {
 
   aimeId: string;
 
-  pageSize: number = 10
+  pageSize: number = 10;
+
+  hideCompleted: boolean = false;
 
   userPointChangelogList: Maimai2ServerMissionUserPointChangelog[] = [];
   userPointChangelogListTotalCount: number = 0;
@@ -57,6 +59,7 @@ export class Maimai2ServerMissionsComponent implements OnInit {
   userPointData: Maimai2ServerMissionUserPointData;
 
   userServerMissionInfoList: Maimai2ServerMissionUserInfo[] = [];
+  filterUserServerMissionInfoList: Maimai2ServerMissionUserInfo[] = [];
 
   ngOnInit() {
     this.aimeId = String(this.userService.currentUser.defaultCard.extId);
@@ -66,6 +69,10 @@ export class Maimai2ServerMissionsComponent implements OnInit {
   load() {
     this.loadUserPointsInfo();
     this.loadUserServerMissionInfo();
+  }
+
+  updateFilterUserServerMissionInfoList(){
+    this.filterUserServerMissionInfoList = this.hideCompleted ? this.userServerMissionInfoList.filter(m => !this.isMissionCompleted(m)) : this.userServerMissionInfoList;
   }
 
   loadUserPointsInfo(page: number = 0) {
@@ -98,6 +105,7 @@ export class Maimai2ServerMissionsComponent implements OnInit {
       (data: ApiResponse<Maimai2UserServerMissionInfoResp>) => {
         if (isOk(data)) {
           this.userServerMissionInfoList = data.data.serverMissionUserInfos;
+          this.updateFilterUserServerMissionInfoList();
         }
         else
           this.toastShowFailedMessage(data, "获取玩家任务列表失败");
