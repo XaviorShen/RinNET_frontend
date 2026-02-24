@@ -71,8 +71,37 @@ export class Maimai2ServerMissionsComponent implements OnInit {
     this.loadUserServerMissionInfo();
   }
 
-  updateFilterUserServerMissionInfoList(){
+  getRefreshSCycleOrderValue(cycle: Maimai2ServerMissionRefreshCycle): number {
+    switch (cycle) {
+      case Maimai2ServerMissionRefreshCycle.EveryDay:
+        return 1;
+      case Maimai2ServerMissionRefreshCycle.EveryWeek:
+        return 2;
+      case Maimai2ServerMissionRefreshCycle.EveryMonth:
+        return 3;
+      default:
+        return 99;
+    }
+  }
+
+  updateFilterUserServerMissionInfoList() {
     this.filterUserServerMissionInfoList = this.hideCompleted ? this.userServerMissionInfoList.filter(m => !this.isMissionCompleted(m)) : this.userServerMissionInfoList;
+    if (this.filterUserServerMissionInfoList && this.filterUserServerMissionInfoList.length > 0)
+      this.filterUserServerMissionInfoList = this.filterUserServerMissionInfoList.sort((a, b) => {
+        //先按刷新周期分类
+        var order = this.getRefreshSCycleOrderValue(a.refreshCycle) - this.getRefreshSCycleOrderValue(b.refreshCycle);
+        if (order != 0)
+          return order;
+/*
+        //再按任务状态分类，未完成的在前面
+        order = Number(this.isMissionCompleted(a)) - Number(this.isMissionCompleted(b));
+        if (order != 0)
+          return order;
+*/
+        //最后按任务标题排序
+        order = a.missionTitle.localeCompare(b.missionTitle);
+        return order;
+      });
   }
 
   loadUserPointsInfo(page: number = 0) {

@@ -61,6 +61,8 @@ export class Maimai2PointExchangesComponent implements OnInit {
 
   searchKeyword: string = "";
 
+  onlyEnable = false;
+
   userExchangeInfoMap: Map<number, Maimai2UserExchangeItemData> = new Map<number, Maimai2UserExchangeItemData>();
 
   ngOnInit() {
@@ -99,6 +101,7 @@ export class Maimai2PointExchangesComponent implements OnInit {
       .set('aimeId', this.aimeId)
       .set('page', page)
       .set('size', this.pageSize)
+      .set('onlyEnable', this.onlyEnable)
       .set('filterItemType', this.filterItemType == null ? 0 : this.filterItemType)
       .set('searchPattern', this.searchKeyword);
 
