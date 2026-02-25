@@ -13,7 +13,8 @@ export enum Maimai2ExchangeItemType {
     Ticket = 12,
     Mile = 13,
     // IntimateItem = 14,
-    KaleidxScopeKey = 15
+    KaleidxScopeKey = 15,
+    DXPass = 901
 }
 
 export enum Maimai2ExchangeItemTypeName {
@@ -31,7 +32,8 @@ export enum Maimai2ExchangeItemTypeName {
     Ticket = "功能卷",
     Mile = "Mile",
     // IntimateItem = 14,
-    KaleidxScopeKey = "门钥匙"
+    KaleidxScopeKey = "门钥匙",
+    DXPass = "DXPass"
 }
 
 export interface Maimai2ExchangeItemData {

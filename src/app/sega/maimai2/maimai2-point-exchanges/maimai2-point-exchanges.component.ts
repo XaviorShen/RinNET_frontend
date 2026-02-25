@@ -213,6 +213,9 @@ export class Maimai2PointExchangesComponent implements OnInit {
       case Maimai2ExchangeItemType.KaleidxScopeKey:
         specialPath = `assets/mai2/common/UI_KLD_DiscoverCourseKey_0${itemData.itemId}.webp`;
         break;
+      case Maimai2ExchangeItemType.DXPass:
+        specialPath = `assets/mai2/common/dxpass_${itemData.itemId}.webp`;
+        break;
     }
 
     if (specialPath !== undefined)
@@ -254,7 +257,8 @@ export class Maimai2PointExchangesComponent implements OnInit {
       [Maimai2ExchangeItemType.Frame]: 'bg-frame',
       [Maimai2ExchangeItemType.Ticket]: 'bg-ticket',
       [Maimai2ExchangeItemType.Mile]: 'bg-mile',
-      [Maimai2ExchangeItemType.KaleidxScopeKey]: 'bg-kaleidxScopeKey'
+      [Maimai2ExchangeItemType.KaleidxScopeKey]: 'bg-kaleidxScopeKey',
+      [Maimai2ExchangeItemType.DXPass]: 'bg-dxpass'
     };
     return typeClassMap[Maimai2ExchangeItemType[itemType]] || 'bg-unknown';
   }
@@ -271,7 +275,8 @@ export class Maimai2PointExchangesComponent implements OnInit {
       [Maimai2ExchangeItemType.Frame]: 'col-type-11',
       [Maimai2ExchangeItemType.Ticket]: 'col-type-12',
       [Maimai2ExchangeItemType.Mile]: 'col-type-13',
-      [Maimai2ExchangeItemType.KaleidxScopeKey]: 'col-type-15'
+      [Maimai2ExchangeItemType.KaleidxScopeKey]: 'col-type-15',
+      [Maimai2ExchangeItemType.DXPass]: 'col-type-901'
     };
     return sizeClassMap[itemType] || 'card-size-default';
   }

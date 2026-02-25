@@ -276,7 +276,14 @@
         <div class="flex-grow-1">
           <h5 class="mb-1">{{ selectedExchangeItem.name }}</h5>
           <p class="small text-secondary mb-0">
-            {{ selectedExchangeItem.description }}
+            <span
+              *ngFor="
+                let line of selectedExchangeItem.description.split('\n');
+                let last = last
+              "
+            >
+              {{ line }}<br *ngIf="!last" />
+            </span>
           </p>
         </div>
       </div>
