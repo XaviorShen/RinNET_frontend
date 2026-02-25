@@ -61,7 +61,7 @@ export class Maimai2PointExchangesComponent implements OnInit {
 
   searchKeyword: string = "";
 
-  onlyEnable = false;
+  onlyEnable = true;
 
   userExchangeInfoMap: Map<number, Maimai2UserExchangeItemData> = new Map<number, Maimai2UserExchangeItemData>();
 
